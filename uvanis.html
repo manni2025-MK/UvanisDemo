@@ -1,0 +1,742 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uvanis</title>
+    <script src="https://cdn.tailwindcss.com/3.4.16"></script>
+    <script>tailwind.config={theme:{extend:{colors:{primary:'#C69C6D',secondary:'#2E2E2E'},borderRadius:{'none':'0px','sm':'4px',DEFAULT:'8px','md':'12px','lg':'16px','xl':'20px','2xl':'24px','3xl':'32px','full':'9999px','button':'8px'}}}}</script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+    <style>
+        :where([class^="ri-"])::before { content: "\f3c2"; }
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #FAF9F6;
+            color: #2E2E2E;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Cormorant Garamond', serif;
+        }
+        .hero-section {
+            background-image: linear-gradient(to right, rgba(250, 249, 246, 0.9), rgba(250, 249, 246, 0.7), rgba(250, 249, 246, 0.5), rgba(250, 249, 246, 0.3), rgba(250, 249, 246, 0)), url('https://readdy.ai/api/search-image?query=luxury%20spa%20interior%20with%20soft%20lighting%2C%20elegant%20furniture%2C%20marble%20surfaces%2C%20muted%20gold%20accents%2C%20and%20subtle%20floral%20arrangements%2C%20creating%20a%20serene%20and%20sophisticated%20atmosphere%20for%20relaxation%20and%20beauty%20treatments&width=1600&height=800&seq=1&orientation=landscape');
+            background-size: cover;
+            background-position: center;
+        }
+        .custom-switch {
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 24px;
+        }
+        .custom-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 24px;
+        }
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+        input:checked + .slider {
+            background-color: #C69C6D;
+        }
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+        .testimonial-card {
+            transition: transform 0.3s ease;
+        }
+        .testimonial-card:hover {
+            transform: translateY(-5px);
+        }
+        .service-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(198, 156, 109, 0.2);
+        }
+        .social-icon {
+            transition: transform 0.3s ease, color 0.3s ease;
+        }
+        .social-icon:hover {
+            transform: translateY(-3px);
+            color: #C69C6D;
+        }
+        input[type="number"]::-webkit-inner-spin-button,
+        input[type="number"]::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header & Navigation -->
+    <header class="bg-white shadow-sm fixed w-full z-50">
+        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#" class="text-3xl font-['Pacifico'] text-primary">Uvanis</a>
+            
+            <nav class="hidden md:flex space-x-8">
+                <a href="#" class="text-secondary hover:text-primary font-medium transition-colors">Home</a>
+                <a href="#about" class="text-secondary hover:text-primary font-medium transition-colors">About</a>
+                <a href="#services" class="text-secondary hover:text-primary font-medium transition-colors">Services</a>
+                <a href="#testimonials" class="text-secondary hover:text-primary font-medium transition-colors">Testimonials</a>
+                <a href="#gallery" class="text-secondary hover:text-primary font-medium transition-colors">Gallery</a>
+                <a href="#blog" class="text-secondary hover:text-primary font-medium transition-colors">Blog</a>
+            </nav>
+            
+            <div class="flex items-center space-x-4">
+                <a href="#book" class="bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Book Now</a>
+                <div class="md:hidden w-10 h-10 flex items-center justify-center cursor-pointer">
+                    <i class="ri-menu-line ri-lg"></i>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section min-h-screen pt-20 flex items-center w-full">
+        <div class="container mx-auto px-4 w-full">
+            <div class="max-w-2xl py-20">
+                <h1 class="text-5xl md:text-6xl font-semibold mb-6 leading-tight">Econsectetur adipiscing elit & eiusmod</h1>
+                <p class="text-xl mb-8 max-w-xl">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#book" class="bg-primary text-white px-8 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors text-center">Book your Experience</a>
+                    <a href="#services" class="border-2 border-secondary text-secondary px-8 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-secondary hover:text-white transition-colors text-center">Explore Services</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold mb-4">Our Story</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor 
+                    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+                    Ut enim ad minim veniam nisi ut aliquip ex ea commodo consequat..</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <div class="overflow-hidden rounded-lg h-80">
+                    <img src="https://readdy.ai/api/search-image?query=elegant%20spa%20reception%20area%20with%20marble%20counter%2C%20fresh%20flowers%2C%20and%20soft%20lighting%2C%20creating%20a%20welcoming%20and%20luxurious%20atmosphere%20for%20guests%20arriving%20for%20their%20beauty%20treatments&width=600&height=800&seq=2&orientation=portrait" alt="Spa Reception" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="overflow-hidden rounded-lg h-80">
+                    <img src="https://readdy.ai/api/search-image?query=professional%20nail%20technician%20applying%20rose%20gold%20nail%20polish%20to%20a%20clients%20hand%20in%20a%20luxury%20salon%20setting%20with%20soft%20lighting%20and%20elegant%20decor&width=600&height=800&seq=3&orientation=portrait" alt="Nail Service" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="overflow-hidden rounded-lg h-80">
+                    <img src="https://readdy.ai/api/search-image?query=close-up%20of%20eyelash%20extension%20application%20in%20a%20luxury%20beauty%20salon%20with%20professional%20equipment%20and%20soft%20lighting%2C%20showcasing%20the%20precision%20and%20care%20involved%20in%20the%20beauty%20treatment&width=600&height=800&seq=4&orientation=portrait" alt="Lash Service" class="w-full h-full object-cover object-top">
+                </div>
+                <div class="overflow-hidden rounded-lg h-80">
+                    <img src="https://readdy.ai/api/search-image?query=relaxing%20facial%20treatment%20being%20performed%20in%20a%20serene%20spa%20room%20with%20soft%20lighting%2C%20luxury%20products%2C%20and%20elegant%20decor%20creating%20a%20peaceful%20atmosphere%20for%20beauty%20and%20wellness&width=600&height=800&seq=5&orientation=portrait" alt="Facial Treatment" class="w-full h-full object-cover object-top">
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <p class="max-w-3xl mx-auto text-lg mb-8">Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                <a href="#team" class="inline-flex items-center text-primary font-medium hover:underline">
+                    Meet Our Team
+                    <i class="ri-arrow-right-line ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-[#f8f7f4]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold mb-4">Our Premium Services</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto text-lg">Magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Service Card 1 -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=luxury%20nail%20service%20with%20professional%20manicurist%20applying%20elegant%20nail%20polish%20in%20a%20high-end%20salon%20with%20marble%20surfaces%20and%20soft%20lighting%2C%20showcasing%20precision%20and%20attention%20to%20detail&width=600&height=400&seq=6&orientation=landscape" alt="Nail Services" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-nail-line text-primary ri-lg"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Software Service</h3>
+                        <p class="mb-4 text-gray-600">Experience our signature manicures and pedicures with premium products and expert techniques. From classic elegance to creative designs.</p>
+                        <a href="#book" class="inline-block bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 2 -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20lash%20technician%20applying%20eyelash%20extensions%20in%20a%20luxury%20beauty%20salon%20with%20elegant%20decor%2C%20soft%20lighting%2C%20and%20high-end%20equipment%2C%20showcasing%20precision%20and%20attention%20to%20detail&width=600&height=400&seq=7&orientation=landscape" alt="Lash Services" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-eye-line text-primary ri-lg"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Software Service</h3>
+                        <p class="mb-4 text-gray-600">Experience our signature manicures and pedicures with premium products and expert techniques. From classic elegance to creative designs.</p>
+                        <a href="#book" class="inline-block bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 3 -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=luxurious%20facial%20treatment%20being%20performed%20in%20an%20elegant%20spa%20room%20with%20soft%20lighting%2C%20premium%20skincare%20products%2C%20and%20serene%20atmosphere%2C%20showcasing%20professional%20skincare%20expertise&width=600&height=400&seq=8&orientation=landscape" alt="Facial Services" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-face-line text-primary ri-lg"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Software Service</h3>
+                        <p class="mb-4 text-gray-600">Experience our signature manicures and pedicures with premium products and expert techniques. From classic elegance to creative designs.</p>
+                        <a href="#book" class="inline-block bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 4 -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20massage%20therapist%20performing%20a%20relaxing%20massage%20in%20a%20luxury%20spa%20setting%20with%20elegant%20decor%2C%20soft%20lighting%2C%20and%20premium%20massage%20oils%20creating%20a%20serene%20atmosphere&width=600&height=400&seq=9&orientation=landscape" alt="Massage Services" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-massage-line text-primary ri-lg"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Software Service</h3>
+                        <p class="mb-4 text-gray-600">Experience our signature manicures and pedicures with premium products and expert techniques. From classic elegance to creative designs.</p>
+                        <a href="#book" class="inline-block bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 5 -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20hair%20stylist%20working%20on%20a%20clients%20hair%20in%20a%20luxury%20salon%20with%20elegant%20mirrors%2C%20premium%20hair%20products%2C%20and%20sophisticated%20decor%20creating%20a%20high-end%20atmosphere&width=600&height=400&seq=10&orientation=landscape" alt="Hair Services" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-scissors-line text-primary ri-lg"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Software Service</h3>
+                        <p class="mb-4 text-gray-600">Experience our signature manicures and pedicures with premium products and expert techniques. From classic elegance to creative designs.</p>
+                        <a href="#book" class="inline-block bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Book Now</a>
+                    </div>
+                </div>
+                
+                <!-- Service Card 6 -->
+                <div class="service-card bg-white rounded-lg overflow-hidden shadow-sm">
+                    <div class="h-64 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=luxury%20makeup%20application%20in%20an%20elegant%20beauty%20salon%20with%20professional%20makeup%20artist%20applying%20high-end%20cosmetics%2C%20soft%20lighting%2C%20and%20premium%20beauty%20products%20displayed%20elegantly&width=600&height=400&seq=11&orientation=landscape" alt="Makeup Services" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="w-12 h-12 bg-primary bg-opacity-10 rounded-full flex items-center justify-center mb-4">
+                            <i class="ri-brush-line text-primary ri-lg"></i>
+                        </div>
+                        <h3 class="text-2xl font-semibold mb-3">Software Service</h3>
+                        <p class="mb-4 text-gray-600">Experience our signature manicures and pedicures with premium products and expert techniques. From classic elegance to creative designs.</p>
+                        <a href="#book" class="inline-block bg-primary text-white px-6 py-2 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#pricing" class="inline-block border-2 border-primary text-primary px-8 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-primary hover:text-white transition-colors">View Full Service Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section id="testimonials" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold mb-4">Client Experiences</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto text-lg">Hear what our clients have to say about their experiences at our products sservices and technology.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Testimonial 1 -->
+                <div class="testimonial-card bg-[#f8f7f4] p-8 rounded-lg">
+                    <div class="text-primary text-4xl mb-4">"</div>
+                    <p class="text-lg mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden mr-4">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20sophisticated%20woman%20with%20elegant%20hairstyle%20and%20natural%20makeup%20in%20a%20neutral%20background&width=100&height=100&seq=12&orientation=squarish" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sopia Martionez</h4>
+                            <p class="text-sm text-gray-600">Software Premium Services</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 2 -->
+                <div class="testimonial-card bg-[#f8f7f4] p-8 rounded-lg">
+                    <div class="text-primary text-4xl mb-4">"</div>
+                    <p class="text-lg mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden mr-4">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20a%20confident%20woman%20with%20beautiful%20eyelashes%20and%20elegant%20appearance%20against%20a%20neutral%20background&width=100&height=100&seq=13&orientation=squarish" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sophia Martinez</h4>
+                            <p class="text-sm text-gray-600">Software Premium Services</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Testimonial 3 -->
+                <div class="testimonial-card bg-[#f8f7f4] p-8 rounded-lg">
+                    <div class="text-primary text-4xl mb-4">"</div>
+                    <p class="text-lg mb-6">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <div class="flex items-center">
+                        <div class="w-12 h-12 bg-gray-200 rounded-full overflow-hidden mr-4">
+                            <img src="https://readdy.ai/api/search-image?query=professional%20headshot%20of%20an%20elegant%20man%20with%20well-groomed%20appearance%20and%20confident%20smile%20against%20a%20neutral%20background&width=100&height=100&seq=14&orientation=squarish" alt="Client" class="w-full h-full object-cover">
+                        </div>
+                        <div>
+                            <h4 class="font-semibold">Sophia Martinez</h4>
+                            <p class="text-sm text-gray-600">Software Premium Services</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#reviews" class="inline-flex items-center text-primary font-medium hover:underline">
+                    Read More Reviews
+                    <i class="ri-arrow-right-line ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Celebrity Clients Gallery -->
+    <section id="gallery" class="py-20 bg-[#f8f7f4]">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold mb-4">Our Celebrity Clients</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto text-lg">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor.</p>
+            </div>
+            
+            <div class="overflow-x-auto pb-4">
+                <div class="flex space-x-6 min-w-max">
+                    <div class="w-64 h-80 rounded-lg overflow-hidden relative group">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20female%20celebrity%20with%20perfect%20manicure%20and%20styled%20hair%20in%20a%20luxury%20setting%20with%20soft%20lighting%20and%20sophisticated%20atmosphere&width=500&height=700&seq=15&orientation=portrait" alt="Celebrity Client" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+                            <div class="p-6 text-white">
+                                <h4 class="text-xl font-semibold">Emma Collins</h4>
+                                <p class="text-sm">Actress & Influencer</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-64 h-80 rounded-lg overflow-hidden relative group">
+                        <img src="https://readdy.ai/api/search-image?query=stylish%20male%20celebrity%20with%20well-groomed%20appearance%20in%20a%20luxury%20setting%20with%20professional%20lighting%20and%20sophisticated%20atmosphere&width=500&height=700&seq=16&orientation=portrait" alt="Celebrity Client" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+                            <div class="p-6 text-white">
+                                <h4 class="text-xl font-semibold">Michael Reynolds</h4>
+                                <p class="text-sm">Actor & Producer</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-64 h-80 rounded-lg overflow-hidden relative group">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20female%20model%20with%20perfect%20makeup%20and%20styled%20hair%20in%20a%20luxury%20setting%20with%20professional%20lighting%20and%20sophisticated%20atmosphere&width=500&height=700&seq=17&orientation=portrait" alt="Celebrity Client" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+                            <div class="p-6 text-white">
+                                <h4 class="text-xl font-semibold">Victoria Chen</h4>
+                                <p class="text-sm">Fashion Model</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-64 h-80 rounded-lg overflow-hidden relative group">
+                        <img src="https://readdy.ai/api/search-image?query=professional%20female%20singer%20with%20elegant%20appearance%20and%20perfect%20manicure%20in%20a%20luxury%20setting%20with%20soft%20lighting%20and%20sophisticated%20atmosphere&width=500&height=700&seq=18&orientation=portrait" alt="Celebrity Client" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+                            <div class="p-6 text-white">
+                                <h4 class="text-xl font-semibold">Natalie Parker</h4>
+                                <p class="text-sm">Recording Artist</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="w-64 h-80 rounded-lg overflow-hidden relative group">
+                        <img src="https://readdy.ai/api/search-image?query=stylish%20male%20influencer%20with%20well-groomed%20appearance%20in%20a%20luxury%20setting%20with%20professional%20lighting%20and%20sophisticated%20atmosphere&width=500&height=700&seq=19&orientation=portrait" alt="Celebrity Client" class="w-full h-full object-cover object-top">
+                        <div class="absolute inset-0 bg-black bg-opacity-40 opacity-0 group-hover:opacity-100 transition-opacity flex items-end">
+                            <div class="p-6 text-white">
+                                <h4 class="text-xl font-semibold">Daniel Williams</h4>
+                                <p class="text-sm">Social Media Personality</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#instagram" class="inline-flex items-center text-primary font-medium hover:underline">
+                    Follow Us on Instagram
+                    <i class="ri-instagram-line ml-2"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog & Events Section -->
+    <section id="blog" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-semibold mb-4">Latest News & Events</h2>
+                <div class="w-20 h-1 bg-primary mx-auto mb-6"></div>
+                <p class="max-w-3xl mx-auto text-lg">Stay updated with our latest technology trends, events, and exclusive offers.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Blog Post 1 -->
+                <div class="bg-[#f8f7f4] rounded-lg overflow-hidden shadow-sm">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=luxury%20beauty%20products%20elegantly%20arranged%20with%20soft%20lighting%2C%20premium%20packaging%2C%20and%20sophisticated%20styling%20for%20a%20high-end%20beauty%20blog%20post&width=600&height=400&seq=20&orientation=landscape" alt="Blog Post" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="text-sm text-gray-500">August 5, 2020</span>
+                            <span class="mx-2 text-gray-300">|</span>
+                            <span class="text-sm text-primary">Software Services</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Lorem ipsum dolor sit amet, consectetur adipiscing.</h3>
+                        <p class="mb-4 text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua.</p>
+                        <a href="#blog-post" class="inline-flex items-center text-primary font-medium hover:underline">
+                            Read More
+                            <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Event Post manni@32__1@@-->
+                <div class="bg-[#f8f7f4] rounded-lg overflow-hidden shadow-sm">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=elegant%20beauty%20workshop%20setup%20in%20a%20luxury%20salon%20with%20professional%20equipment%2C%20attendees%2C%20and%20sophisticated%20decor%20for%20a%20high-end%20beauty%20event&width=600&height=400&seq=21&orientation=landscape" alt="Event Post" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="text-sm text-gray-500">August 5, 2020</span>
+                            <span class="mx-2 text-gray-300">|</span>
+                            <span class="text-sm text-primary">Software Services</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">Exclusive Lash Masterclass with Celebrity Artist</h3>
+                        <p class="mb-4 text-gray-600">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore 
+et dolore magna aliqua..</p>
+                        <a href="#event-details" class="inline-flex items-center text-primary font-medium hover:underline">
+                            Event Details
+                            <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Blog Post 2 -->
+                <div class="bg-[#f8f7f4] rounded-lg overflow-hidden shadow-sm">
+                    <div class="h-56 overflow-hidden">
+                        <img src="https://readdy.ai/api/search-image?query=luxury%20skincare%20routine%20demonstration%20with%20premium%20products%2C%20elegant%20setting%2C%20and%20professional%20lighting%20for%20a%20high-end%20beauty%20blog%20post&width=600&height=400&seq=22&orientation=landscape" alt="Blog Post" class="w-full h-full object-cover object-top">
+                    </div>
+                    <div class="p-6">
+                        <div class="flex items-center mb-3">
+                            <span class="text-sm text-gray-500">August 5, 2020</span>
+                            <span class="mx-2 text-gray-300">|</span>
+                            <span class="text-sm text-primary">Software Services</span>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-3">The Ultimate Guide to Summer Skincare</h3>
+                        <p class="mb-4 text-gray-600">Learn how to protect and nourish your skin during the summer months with our expert tips and product recommendations.</p>
+                        <a href="#blog-post" class="inline-flex items-center text-primary font-medium hover:underline">
+                            Read More
+                            <i class="ri-arrow-right-line ml-2"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-16 text-center">
+                <a href="#all-posts" class="inline-block border-2 border-primary text-primary px-8 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-primary hover:text-white transition-colors">View All Posts</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section id="book" class="py-20 bg-[#f8f7f4]">
+        <div class="container mx-auto px-4">
+            <div class="max-w-5xl mx-auto bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="md:flex">
+                    <div class="md:w-1/2 p-8 md:p-12">
+                        <h2 class="text-3xl font-semibold mb-6">Book Your Appointment</h2>
+                        <p class="mb-8 text-gray-600">Schedule your luxury experience with us. Complete the form below and our team will confirm your appointment.</p>
+                        
+                        <form>
+                            <div class="mb-4">
+                                <label for="name" class="block text-sm font-medium mb-2">Full Name</label>
+                                <input type="text" id="name" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your full name">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="email" class="block text-sm font-medium mb-2">Email Address</label>
+                                <input type="email" id="email" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your email address">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="phone" class="block text-sm font-medium mb-2">Phone Number</label>
+                                <input type="tel" id="phone" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent" placeholder="Your phone number">
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="service" class="block text-sm font-medium mb-2">Service</label>
+                                <div class="relative">
+                                    <select id="service" class="w-full px-4 py-2 border border-gray-300 rounded appearance-none focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent pr-8">
+                                        <option value="">Select a service</option>
+                                        <option value="nails">Nail Services</option>
+                                        <option value="lashes">Lash Extensions</option>
+                                        <option value="facial">Facial Treatments</option>
+                                        <option value="massage">Massage Therapy</option>
+                                        <option value="hair">Hair Styling</option>
+                                        <option value="makeup">Makeup Services</option>
+                                    </select>
+                                    <div class="absolute inset-y-0 right-0 flex items-center px-2 pointer-events-none">
+                                        <i class="ri-arrow-down-s-line"></i>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="date" class="block text-sm font-medium mb-2">Preferred Date</label>
+                                <input type="date" id="date" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="time" class="block text-sm font-medium mb-2">Preferred Time</label>
+                                <input type="time" id="time" class="w-full px-4 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                            </div>
+                            
+                            <div class="flex items-center mb-6">
+                                <label class="custom-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                                <span class="ml-3 text-sm">Send me special offers and promotions</span>
+                            </div>
+                            
+                            <button type="submit" class="w-full bg-primary text-white px-6 py-3 !rounded-button whitespace-nowrap font-medium hover:bg-opacity-90 transition-colors">Book Appointment</button>
+                        </form>
+                    </div>
+                    
+                    <div class="md:w-1/2 bg-cover bg-center" style="background-image: url('https://readdy.ai/api/search-image?query=luxury%20spa%20interior%20with%20elegant%20decor%2C%20soft%20lighting%2C%20premium%20furniture%2C%20and%20sophisticated%20atmosphere%20creating%20a%20serene%20environment%20for%20beauty%20treatments%20and%20relaxation&width=800&height=1000&seq=23&orientation=portrait')">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer start-->
+    <footer class="bg-secondary text-white pt-16 pb-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                <!-- About Column -->
+                <div>
+                    <h3 class="text-2xl font-['Pacifico'] text-primary mb-6">Uvanix</h3>
+                    <p class="mb-6">The number of lines in a paragraph depends on the size of the
+                         browser window. If you resize the browser window, the number of lines in this paragraph will change.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon w-10 h-10 flex items-center justify-center border border-white rounded-full">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                        <a href="#" class="social-icon w-10 h-10 flex items-center justify-center border border-white rounded-full">
+                            <i class="ri-facebook-line"></i>
+                        </a>
+                        <a href="#" class="social-icon w-10 h-10 flex items-center justify-center border border-white rounded-full">
+                            <i class="ri-twitter-x-line"></i>
+                        </a>
+                        <a href="#" class="social-icon w-10 h-10 flex items-center justify-center border border-white rounded-full">
+                            <i class="ri-pinterest-line"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Quick Links -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Quick Links</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#about" class="hover:text-primary transition-colors">About Us</a></li>
+                        <li><a href="#services" class="hover:text-primary transition-colors">Our Services</a></li>
+                        <li><a href="#book" class="hover:text-primary transition-colors">Book Appointment</a></li>
+                        <li><a href="#blog" class="hover:text-primary transition-colors">Blog & Events</a></li>
+                        <li><a href="#gallery" class="hover:text-primary transition-colors">Gallery</a></li>
+                        <li><a href="#contact" class="hover:text-primary transition-colors">Contact Us</a></li>
+                    </ul>
+                </div>
+                
+                <!-- Contact Info -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Contact Us</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <div class="w-5 h-5 flex items-center justify-center mt-1 mr-3">
+                                <i class="ri-map-pin-line"></i>
+                            </div>
+                            <span>Building no. 3, Sector 52, Noida 201301</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-3">
+                                <i class="ri-phone-line"></i>
+                            </div>
+                            <span>000 000-0000</span>
+                        </li>
+                        <li class="flex items-center">
+                            <div class="w-5 h-5 flex items-center justify-center mr-3">
+                                <i class="ri-mail-line"></i>
+                            </div>
+                            <span>info@uvanis.com</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <!-- Opening Hours -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-6">Opening Hours</h4>
+                    <ul class="space-y-3">
+                        <li class="flex justify-between">
+                            <span>Monday - Friday</span>
+                            <span>9:00 AM - 6:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Saturday</span>
+                            <span>9:00 AM - 6:00 PM</span>
+                        </li>
+                        <li class="flex justify-between">
+                            <span>Sunday</span>
+                            <span>10:00 AM - 5:00 PM</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="pt-8 border-t border-gray-700 text-center text-sm">
+                <p>&copy; Uvanis. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <!-- Footer end-->
+
+    <!-- Mobile Sticky Bottom Bar (Hidden on Desktop) -->
+    <div class="md:hidden fixed bottom-0 left-0 right-0 bg-white shadow-lg py-3 px-4 flex justify-between items-center z-40">
+        <a href="#book" class="flex flex-col items-center text-xs">
+            <div class="w-6 h-6 flex items-center justify-center mb-1">
+                <i class="ri-calendar-line text-primary"></i>
+            </div>
+            <span>Book Now</span>
+        </a>
+        
+        <a href="tel:3105551234" class="flex flex-col items-center text-xs">
+            <div class="w-6 h-6 flex items-center justify-center mb-1">
+                <i class="ri-phone-line text-primary"></i>
+            </div>
+            <span>Call Us</span>
+        </a>
+        
+        <a href="#" class="flex flex-col items-center text-xs">
+            <div class="w-6 h-6 flex items-center justify-center mb-1">
+                <i class="ri-instagram-line text-primary"></i>
+            </div>
+            <span>Instagram</span>
+        </a>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
+            const menuButton = document.querySelector('.ri-menu-line');
+            if (menuButton) {
+                const nav = document.querySelector('nav');
+                menuButton.addEventListener('click', function() {
+                    nav.classList.toggle('hidden');
+                    nav.classList.toggle('flex');
+                    nav.classList.toggle('flex-col');
+                    nav.classList.toggle('absolute');
+                    nav.classList.toggle('top-16');
+                    nav.classList.toggle('right-4');
+                    nav.classList.toggle('bg-white');
+                    nav.classList.toggle('p-4');
+                    nav.classList.toggle('shadow-lg');
+                    nav.classList.toggle('rounded-lg');
+                    nav.classList.toggle('z-50');
+                });
+            }
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Custom switch functionality
+            const switches = document.querySelectorAll('.custom-switch input');
+            switches.forEach(switchInput => {
+                switchInput.addEventListener('change', function() {
+                    // You can add additional functionality here
+                });
+            });
+        });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form validation
+            const form = document.querySelector('form');
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Basic validation
+                    const name = document.getElementById('name').value;
+                    const email = document.getElementById('email').value;
+                    const service = document.getElementById('service').value;
+                    const date = document.getElementById('date').value;
+                    
+                    if (!name || !email || !service || !date) {
+                        alert('Please fill in all required fields');
+                        return;
+                    }
+                    
+                    // Here you would typically send the form data to a server
+                    alert('Thank you for booking! We will confirm your appointment shortly.');
+                    form.reset();
+                });
+            }
+        });
+    </script>
+</body>
+</html>
+
+
+<!--
+https://github.com/manni2025-MK/UvanisDemo
+-->
